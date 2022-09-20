@@ -1,7 +1,6 @@
 # Directories
 .vs/
-bin/
-bin-int/
+Debug-windows-x86_64/
 
 # Files
 *.sln
