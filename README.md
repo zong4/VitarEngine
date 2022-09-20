@@ -1,10 +1,10 @@
 # Vitar Engine
 
-<!-- <p align="center">
-  <a href="https://games104.boomingtech.com">
-    <img src="engine/source/editor/resource/PiccoloEngine.png" width="400" alt="Piccolo Engine logo">
+<p align="center">
+  <a href="https://github.com/zong4/VitarEngine">
+    <img src="Vitar/VitarEngineIcon.jpg" width="400" alt="Vitar Engine logo">
   </a>
-</p> -->
+</p>
 
 ## Continuous build status
 
