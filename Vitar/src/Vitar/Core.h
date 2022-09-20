@@ -1,17 +1,21 @@
 #pragma once
 
 #ifdef VITAR_PLANTFORM_WINDOWS
+#if VITAR_DYNAMIC_LINK
 	#ifdef VITAR_BUILD_DLL
 		#define VITAR_API __declspec(dllexport)
 	#else
 		#define VITAR_API __declspec(dllimport)
 	#endif // VITAR_BUILD_DLL
 #else
+	#define VITAR_API
+#endif
+#else
 	#error Vitar only supports Windows!
 #endif // VITAR_PLANTFORM_WINDOWS
 
 
-#define VITAR_ENABLE_ASSERTS 0
+//#define VITAR_ENABLE_ASSERTS 0
 
 #ifdef VITAR_DEBUG
 	#define VITAR_ENABLE_ASSERTS

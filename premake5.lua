@@ -17,13 +17,12 @@ include "Vitar/vendor/GLFW"
 include "Vitar/vendor/Glad"
 include "Vitar/vendor/imgui"
 
---startproject "Sandbox"
-
 project "Vitar"
     location "Vitar"
-    kind "SharedLib"
+    kind "StaticLib"
     language "C++"
-    staticruntime "off"
+    cppdialect "C++17"
+    staticruntime "on"
 
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -37,6 +36,11 @@ project "Vitar"
         "%{prj.name}/src/**.cpp",
         "%{prj.name}/vendor/glm/glm/**.hpp",
         "%{prj.name}/vendor/glm/glm/**.inl",
+   }
+
+   defines
+   {
+        "_CRT_SECURE_NO_WARNINGS",
    }
 
    includedirs
@@ -58,7 +62,6 @@ project "Vitar"
    }
 
    filter "system:windows"
-        cppdialect "C++17"
         systemversion "latest"
 
         defines
@@ -69,31 +72,27 @@ project "Vitar"
             "IMGUI_API=__declspec(dllexport)",
         }
 
-        postbuildcommands
-        {
-            ("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\""),
-        }
-
     filter "configurations:Debug"
         defines "VITAR_DEBUG"
         runtime "Debug"
-        symbols "On"
+        symbols "on"
 
     filter "configurations:Release"
         defines "VITAR_Release"
         runtime "Release"
-        symbols "On"
+        optimize "on"
 
     filter "configurations:Dist"
         defines "VITAR_Dist"
         runtime "Release"
-        symbols "On"
+        optimize "on"
 
 project "Sandbox"
     location "Sandbox"
     kind "ConsoleApp"
     language "C++"
-    staticruntime "off"
+    cppdialect "C++17"
+    staticruntime "on"
 
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -118,7 +117,6 @@ project "Sandbox"
     }
 
     filter "system:windows"
-        cppdialect "C++17"
         systemversion "latest"
 
         defines
@@ -130,14 +128,14 @@ project "Sandbox"
     filter "configurations:Debug"
         defines "VITAR_DEBUG"
         runtime "Debug"
-        symbols "On"
+        symbols "on"
 
     filter "configurations:Release"
         defines "VITAR_Release"
         runtime "Release"
-        symbols "On"
+        optimize "on"
 
     filter "configurations:Dist"
         defines "VITAR_Dist"
         runtime "Release"
-        symbols "On"
+        optimize "on"

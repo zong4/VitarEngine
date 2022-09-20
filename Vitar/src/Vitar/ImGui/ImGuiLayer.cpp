@@ -4,7 +4,7 @@
 #include "imgui.h"
 #include "Vitar/Application.h"
 
-#define IMGUI_IMPL_API
+//#define IMGUI_IMPL_API
 #include "backends/imgui_impl_opengl3.h"
 #include "backends/imgui_impl_glfw.h"
 
@@ -79,7 +79,7 @@ namespace Vitar
 	{
 		ImGuiIO& io = ImGui::GetIO();
 		Application& app = Application::Get();
-		io.DisplaySize = ImVec2(app.GetWindow().GetWidth(), app.GetWindow().GetWidth());
+		io.DisplaySize = ImVec2((float)app.GetWindow().GetWidth(), (float)app.GetWindow().GetWidth());
 
 		// Rendering
 		ImGui::Render();
