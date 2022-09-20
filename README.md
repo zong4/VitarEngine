@@ -10,7 +10,7 @@
 
 |    Build Type     |                                                                                      Status                                                                                      |
 | :---------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| **Build Windows** | [![Build Windows](https://github.com/BoomingTech/Piccolo/actions/workflows/build_windows.yml/badge.svg)](https://github.com/zong4/VitarEngine/actions/workflows/build_windows.yml) |
+| **Build Windows** | [![Build Windows](https://github.com/BoomingTech/Piccolo/actions/workflows/build_windows.yml/badge.svg)](https://github.com/zong4/VitarEngine/actions) |
 |  **Build Linux**  |    [![Build Linux](https://github.com/BoomingTech/Piccolo/actions/workflows/build_linux.yml/badge.svg)]()    |
 |  **Build macOS**  |    [![Build macOS](https://github.com/BoomingTech/Piccolo/actions/workflows/build_macos.yml/badge.svg)]()    |
 
