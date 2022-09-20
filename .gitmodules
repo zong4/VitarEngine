@@ -1,0 +1,12 @@
+[submodule "Vitar/vendor/spdlog"]
+	path = Vitar/vendor/spdlog
+	url = https://github.com/gabime/spdlog
+[submodule "Vitar/vendor/GLFW"]
+	path = Vitar/vendor/GLFW
+	url = https://github.com/TheCherno/glfw
+[submodule "Vitar/vendor/imgui"]
+	path = Vitar/vendor/imgui
+	url = https://github.com/TheCherno/imgui
+[submodule "Vitar/vendor/glm"]
+	path = Vitar/vendor/glm
+	url = https://github.com/g-truc/glm

@@ -6,7 +6,10 @@ extern Vitar::Application* Vitar::CreateApplication();
 
 int main(int argc, char** argv)
 {
-	std::cout << "Vitar Engine" << std::endl;
+	Vitar::Log::Init();
+	VITAR_CORE_WARN("Initialized Log!");
+	VITAR_INFO("Hello!");
+
 	auto app = Vitar::CreateApplication();
 	app->Run();
 	delete app;
