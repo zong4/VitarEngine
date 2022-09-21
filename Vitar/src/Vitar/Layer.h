@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Vitar/Core.h"
+#include "Vitar/Core/Timestep.h"
 #include "Vitar/Events/Event.h"
 
 namespace Vitar
@@ -13,7 +14,7 @@ namespace Vitar
 
 		virtual void OnAttach(){}
 		virtual void OnDetach(){}
-		virtual void OnUpdate(){}
+		virtual void OnUpdate(Timestep timeStep){}
 		virtual void OnImGuiRender(){}
 		virtual void OnEvent(Event& event){}
 

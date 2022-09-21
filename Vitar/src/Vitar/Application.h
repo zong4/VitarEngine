@@ -6,11 +6,9 @@
 #include "Events/ApplicationEvent.h"
 #include "Vitar/LayerStack.h"
 
-#include "Vitar/ImGui/ImGuiLayer.h"
+#include "Vitar/Core/Timestep.h"
 
-#include "Vitar/Renderer/Shader.h"
-#include "Vitar/Renderer/Buffer.h"
-#include "Vitar/Renderer/VertexArray.h"
+#include "Vitar/ImGui/ImGuiLayer.h"
 
 namespace Vitar 
 {
@@ -39,12 +37,8 @@ namespace Vitar
 
 		LayerStack m_LayerStack;
 
-		std::shared_ptr<Shader> m_Shader;
-		std::shared_ptr<VertexArray> m_VertexArray;
-
-		// Examples
-		std::shared_ptr<Shader> m_BlueShader;
-		std::shared_ptr<VertexArray> m_SquareVA;
+		Timestep m_TimeStep;
+		float m_LastFrameTime = 0.0f;
 
 	private:
 		static Application* s_Instance;
