@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Vitar/Window.h"
+#include "Vitar/Renderer/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>
 
@@ -30,6 +31,7 @@ namespace Vitar
 
 	private:
 		GLFWwindow* m_Window;
+		GraphicsContext* m_Context;
 
 		struct WindowData
 		{
