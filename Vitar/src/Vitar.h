@@ -21,6 +21,7 @@
 #include "Vitar/Renderer/Buffer.h"
 #include "Vitar/Renderer/Shader.h"
 #include "Vitar/Renderer/VertexArray.h"
+#include "Vitar/Renderer/Texture.h"
 
 #include "Vitar/Renderer/OrthographicCamera.h"
 // -----------------------------
