@@ -2,8 +2,8 @@
 
 #include "Event.h"
 
-namespace Vitar {
-
+namespace Vitar 
+{
 	class VITAR_API WindowResizeEvent : public Event
 	{
 	public:

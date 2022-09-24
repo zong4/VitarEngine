@@ -16,6 +16,7 @@
 
 // ----Renderer-----------------
 #include "Vitar/Renderer/Renderer.h"
+#include "Vitar/Renderer/Renderer2D.h"
 #include "Vitar/Renderer/RenderCommand.h"
 
 #include "Vitar/Renderer/Buffer.h"
@@ -24,9 +25,6 @@
 #include "Vitar/Renderer/Texture.h"
 
 #include "Vitar/Renderer/OrthographicCamera.h"
-// -----------------------------
-
-// ----Entry Point--------------
-#include "Vitar/EntryPoint.h"
+#include "Vitar/OrthographicCameraController.h"
 // -----------------------------
 

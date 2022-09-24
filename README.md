@@ -21,10 +21,6 @@ To build Vitar, you must first install the following tools.
 ### Windows 10/11
 
 - Visual Studio 2019 (or more recent)
-- Premake 5 (or more recent)
-- Git 2.1 (or more recent)
-
-Also, you can find premake5.exe at the **vendor\bin\premake** directory.
 
 ### macOS >= 10.15 (x86_64)
 
