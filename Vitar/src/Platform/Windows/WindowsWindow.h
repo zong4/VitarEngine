@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Vitar/Window.h"
+#include "Vitar/Core/Window.h"
 #include "Vitar/Renderer/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>

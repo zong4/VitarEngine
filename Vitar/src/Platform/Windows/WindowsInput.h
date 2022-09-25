@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Vitar/Input.h"
+#include "Vitar/Core/Input.h"
 
 namespace Vitar
 {

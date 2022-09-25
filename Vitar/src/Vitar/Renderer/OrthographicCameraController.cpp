@@ -1,8 +1,8 @@
 #include "VitarPCH.h"
 #include "OrthographicCameraController.h"
 
-#include "Vitar/Input.h"
-#include "Vitar/KeyCodes.h"
+#include "Vitar/Core/Input.h"
+#include "Vitar/Core/KeyCodes.h"
 
 Vitar::OrthographicCameraController::OrthographicCameraController(float aspectRatio, bool rotation) 
 	: m_AspectRatio(aspectRatio), m_Rotation(rotation), m_Camera(-m_AspectRatio * m_ZoomLevel, m_AspectRatio* m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel)

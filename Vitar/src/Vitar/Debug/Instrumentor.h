@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Vitar/Log.h"
+#include "Vitar/Core/Base.h"
 
 #include <algorithm>
 #include <chrono>

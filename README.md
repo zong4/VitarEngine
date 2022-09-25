@@ -29,7 +29,7 @@ To build Vitar, you must first install the following tools.
 
 ## Build Vitar
 
- - Firstly, download submodules.
+Firstly, download submodules.
 
 ```
 git submodule update --init --recursive

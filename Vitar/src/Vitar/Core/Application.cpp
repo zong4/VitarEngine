@@ -1,7 +1,7 @@
 #include "VitarPCH.h"
 #include "Application.h"
 
-#include "Vitar/Log.h"
+#include "Vitar/Core/Log.h"
 #include <glad/glad.h>
 #include "Vitar/Renderer/Renderer.h"
 #include "Input.h"

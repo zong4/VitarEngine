@@ -2,7 +2,7 @@
 
 #include "VitarPCH.h"
 
-#include "Vitar/Core.h"
+#include "Vitar/Core/Base.h"
 #include "Vitar/Events/Event.h"
 
 namespace Vitar 

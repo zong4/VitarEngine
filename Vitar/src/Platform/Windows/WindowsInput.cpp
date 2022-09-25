@@ -2,7 +2,7 @@
 #include "WindowsInput.h"
 
 #include <GLFW/glfw3.h>
-#include "Vitar/Application.h"
+#include "Vitar/Core/Application.h"
 
 namespace Vitar
 {

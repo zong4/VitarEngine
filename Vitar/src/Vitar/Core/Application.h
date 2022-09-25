@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Core.h"
-#include "Events/Event.h"
+#include "Base.h"
+#include "../Events/Event.h"
 #include "Window.h"
-#include "Events/ApplicationEvent.h"
-#include "Vitar/LayerStack.h"
+#include "../Events/ApplicationEvent.h"
+#include "Vitar/Core/LayerStack.h"
 
 #include "Vitar/Core/Timestep.h"
 

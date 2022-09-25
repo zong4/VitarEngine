@@ -1,6 +1,6 @@
 #include "VitarPCH.h"
 #include <Vitar.h>
-#include <Vitar/EntryPoint.h>
+#include <Vitar/Core/EntryPoint.h>
 
 #include "Sandbox2D.h"
 

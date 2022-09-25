@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include "Vitar/Core.h"
+#include "Vitar/Core/Base.h"
 
 namespace Vitar
 {

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Vitar/Core.h"
+#include "Vitar/Core/Base.h"
 #include "Vitar/Core/Timestep.h"
 #include "Vitar/Events/Event.h"
 
