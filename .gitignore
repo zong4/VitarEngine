@@ -7,3 +7,4 @@ Debug-windows-x86_64/
 *.vcxproj
 *.filters
 *.user
+Sandbox/**.json
