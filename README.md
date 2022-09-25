@@ -21,12 +21,19 @@ To build Vitar, you must first install the following tools.
 ### Windows 10/11
 
 - Visual Studio 2019 (or more recent)
+- Git 2.1 (or more recent)
 
 ### macOS >= 10.15 (x86_64)
 
 ### Ubuntu 20.04
 
 ## Build Vitar
+
+ - Firstly, download submodules.
+
+```
+git submodule update --init --recursive
+```
 
 ### Build on Windows
 
