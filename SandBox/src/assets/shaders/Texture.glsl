@@ -24,11 +24,12 @@ layout(location = 0) out vec4 color;
 
 uniform vec4 v_Color;
 uniform sampler2D u_Texture;
+uniform float u_TilingFactor;
 
 in vec2 v_TexCoord;
 			
 void main()
 {
 	//color = v_Color;
-	color = texture(u_Texture, v_TexCoord) * v_Color;
+	color = texture(u_Texture, v_TexCoord * u_TilingFactor) * v_Color;
 }

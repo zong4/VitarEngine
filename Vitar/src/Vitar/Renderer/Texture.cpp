@@ -18,6 +18,18 @@ namespace Vitar
 		return nullptr;
 	}
 
+	Ref<Texture2D> Texture2D::Create(uint32_t width, uint32_t height, void* data, uint32_t size)
+	{
+		switch (Renderer::GetAPI())
+		{
+		case RendererAPI::API::None:      VITAR_CORE_ASSERT(false, "RenderAPI::None is currently not supported!"); return nullptr;
+		case RendererAPI::API::OpenGL:    return CreateRef<OpenGLTexture2D>(width, height, data, size);
+		}
+
+		VITAR_CORE_ASSERT(false, "Unknown RendererAPI!");
+		return nullptr;
+	}
+
 	Ref<Texture2D> Texture2D::Create(const std::string& path)
 	{
 		switch (Renderer::GetAPI())

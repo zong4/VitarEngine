@@ -14,6 +14,8 @@ namespace Vitar
 
 	void OpenGLContext::Init()
 	{
+		VITAR_PROFILE_FUNCTION();
+
 		glfwMakeContextCurrent(m_WindowHandle);
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		VITAR_CORE_ASSERT(status, "Failed to initalize Glad!");
@@ -26,6 +28,8 @@ namespace Vitar
 
 	void OpenGLContext::SwapBuffers()
 	{
+		VITAR_PROFILE_FUNCTION();
+
 		glfwSwapBuffers(m_WindowHandle);
 	}
 }

@@ -17,6 +17,8 @@ namespace Vitar
 
 	OpenGLShader::OpenGLShader(const std::string& filepath)
 	{
+		VITAR_PROFILE_FUNCTION();
+
 		// Extract name from filepath
 		auto lastSlash = filepath.find_last_of("/\\");
 		lastSlash = lastSlash == std::string::npos ? 0 : lastSlash + 1;
@@ -31,6 +33,8 @@ namespace Vitar
 
 	OpenGLShader::OpenGLShader(const std::string& name, const std::string& vertexSrc, const std::string& fragmentSrc) : m_Name(name)
 	{
+		VITAR_PROFILE_FUNCTION();
+
 		std::unordered_map<GLenum, std::string> sources;
 		sources[GL_VERTEX_SHADER] = vertexSrc;
 		sources[GL_FRAGMENT_SHADER] = fragmentSrc;
@@ -39,36 +43,64 @@ namespace Vitar
 
 	OpenGLShader::~OpenGLShader()
 	{
+		VITAR_PROFILE_FUNCTION();
+
 		glDeleteProgram(m_RendererID);
 	}
 
 	void OpenGLShader::Bind() const
 	{
+		VITAR_PROFILE_FUNCTION();
+
 		glUseProgram(m_RendererID);
 	}
 
 	void OpenGLShader::Unbind() const
 	{
+		VITAR_PROFILE_FUNCTION();
+
 		glUseProgram(0);
 	}
 
 	void OpenGLShader::SetInt(const std::string& name, int value)
 	{
+		VITAR_PROFILE_FUNCTION();
+
 		UploadUniformInt(name, value);
+	}
+
+	void OpenGLShader::SetFloat1(const std::string& name, float value)
+	{
+		VITAR_PROFILE_FUNCTION();
+
+		UploadUniformFloat1(name, value);
+	}
+
+	void OpenGLShader::SetFloat2(const std::string& name, const glm::vec2& value)
+	{
+		VITAR_PROFILE_FUNCTION();
+
+		UploadUniformFloat2(name, value);
 	}
 
 	void OpenGLShader::SetFloat3(const std::string& name, const glm::vec3& value)
 	{
+		VITAR_PROFILE_FUNCTION();
+
 		UploadUniformFloat3(name, value);
 	}
 
 	void OpenGLShader::SetFloat4(const std::string& name, const glm::vec4& value)
 	{
+		VITAR_PROFILE_FUNCTION();
+
 		UploadUniformFloat4(name, value);
 	}
 
 	void OpenGLShader::SetMat4(const std::string& name, const glm::mat4& value)
 	{
+		VITAR_PROFILE_FUNCTION();
+
 		UploadUniformMat4(name, value);
 	}
 

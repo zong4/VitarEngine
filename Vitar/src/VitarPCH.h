@@ -15,6 +15,8 @@
 
 #include "Vitar/Log.h"
 
+#include "Vitar/Debug/Instrumentor.h"
+
 
 #ifdef VITAR_PLANTFORM_WINDOWS
 	#include<Windows.h>

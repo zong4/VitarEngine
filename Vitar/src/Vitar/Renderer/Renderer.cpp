@@ -10,6 +10,8 @@ namespace Vitar
 
 	void Renderer::Init()
 	{
+		VITAR_PROFILE_FUNCTION();
+
 		RenderCommand::Init();
 		Renderer2D::Init();
 	}
@@ -27,6 +29,11 @@ namespace Vitar
 	void Renderer::EndScene()
 	{
 
+	}
+
+	void Renderer::Shutdown()
+	{
+		Renderer2D::Shutdown();
 	}
 
 	void Renderer::Submit(const Ref<Shader>& shader, const Ref<VertexArray>& vertexArray, const glm::mat4& transform)
