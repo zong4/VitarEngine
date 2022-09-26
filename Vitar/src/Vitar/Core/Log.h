@@ -6,7 +6,7 @@
 
 namespace Vitar
 {
-	class VITAR_API Log
+	class Log
 	{
 	public:
 		static void Init();

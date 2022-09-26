@@ -26,7 +26,10 @@ namespace Vitar
 			const Ref<Texture2D>& texture = Texture2D::Create(1, 1, &(whiteTextureData), sizeof(uint32_t)), float tilingFactor = 1.0f);
 		static void DrawQuad(const glm::vec3& position = { 0.0f,0.0f,0.0f }, const glm::vec2& size = { 1.0f, 1.0f }, float rotation = 0.0f, const glm::vec4& color = { 1.0f, 1.0f, 1.0f, 1.0f },
 			const Ref<Texture2D>& texture = Texture2D::Create(1, 1, &(whiteTextureData), sizeof(uint32_t)), float tilingFactor = 1.0f);
-	
+
+		static void DrawQuad(const glm::mat4& transform, const glm::vec4& color = glm::vec4(1.0f), 
+			const Ref<Texture2D>& texture = Texture2D::Create(1, 1, &(whiteTextureData), sizeof(uint32_t)), float tilingFactor = 1.0f);
+
 		// Stats
 		struct Statistics
 		{

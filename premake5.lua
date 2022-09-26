@@ -18,6 +18,7 @@ IncludeDir["Glad"] = "Vitar/vendor/Glad/include"
 IncludeDir["ImGui"] = "Vitar/vendor/imgui"
 IncludeDir["glm"] = "Vitar/vendor/glm"
 IncludeDir["stb_image"] = "Vitar/vendor/stb_image"
+IncludeDir["entt"] = "Vitar/vendor/entt/include"
 
 group "Dependencies"
 	include "Vitar/vendor/GLFW"
@@ -63,6 +64,7 @@ project "Vitar"
         "%{IncludeDir.ImGui}",
         "%{IncludeDir.glm}",
         "%{IncludeDir.stb_image}",
+        "%{IncludeDir.entt}",
    }
 
    links
@@ -78,10 +80,9 @@ project "Vitar"
 
         defines
         {
-            "VITAR_PLANTFORM_WINDOWS",
-            "VITAR_BUILD_DLL",
-            "GLFW_INCLUDE_NONE",
-            "IMGUI_API=__declspec(dllexport)",
+            -- "VITAR_PLANTFORM_WINDOWS",
+            -- "VITAR_BUILD_DLL",
+            -- "GLFW_INCLUDE_NONE",
         }
 
     filter "configurations:Debug"
@@ -135,7 +136,7 @@ project "Sandbox"
         defines
         {
             "VITAR_PLANTFORM_WINDOWS",
-            "IMGUI_API=__declspec(dllimport)",
+            -- "IMGUI_API=__declspec(dllimport)",
         }
 
     filter "configurations:Debug"
@@ -178,6 +179,7 @@ project "VitarEditor"
 		"Vitar/vendor",
         "Vitar/vendor/Glad/include",
 		"%{IncludeDir.glm}",
+        "%{IncludeDir.entt}",
 	}
 
 	links
@@ -191,7 +193,6 @@ project "VitarEditor"
         defines
         {
             "VITAR_PLANTFORM_WINDOWS",
-            "IMGUI_API=__declspec(dllimport)",
         }
 
 	filter "configurations:Debug"

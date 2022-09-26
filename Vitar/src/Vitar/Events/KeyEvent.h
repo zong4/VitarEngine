@@ -4,7 +4,7 @@
 
 namespace Vitar {
 
-	class VITAR_API KeyEvent : public Event
+	class KeyEvent : public Event
 	{
 	public:
 		inline int GetKeyCode() const { return m_KeyCode; }
@@ -16,7 +16,7 @@ namespace Vitar {
 		int m_KeyCode;
 	};
 
-	class VITAR_API KeyPressedEvent : public KeyEvent
+	class KeyPressedEvent : public KeyEvent
 	{
 	public:
 		KeyPressedEvent(int keycode, int repeatCount) : KeyEvent(keycode), m_RepeatCount(repeatCount){}
@@ -36,7 +36,7 @@ namespace Vitar {
 		int m_RepeatCount;
 	};
 
-	class VITAR_API KeyReleasedEvent : public KeyEvent
+	class KeyReleasedEvent : public KeyEvent
 	{
 	public:
 		KeyReleasedEvent(int keycode) : KeyEvent(keycode){}
@@ -51,7 +51,7 @@ namespace Vitar {
 		EVENT_CLASS_TYPE(KeyPressed)
 	};
 
-	class VITAR_API KeyTypedEvent : public KeyEvent
+	class KeyTypedEvent : public KeyEvent
 	{
 	public:
 		KeyTypedEvent(int keycode) : KeyEvent(keycode) {}

@@ -17,6 +17,9 @@
 
 #include "Vitar/ImGui/ImGuiLayer.h"
 
+#include "Vitar/Scene/Scene.h"
+#include "Vitar/Scene/Components.h"
+
 // ---Renderer------------------------
 #include "Vitar/Renderer/Renderer.h"
 #include "Vitar/Renderer/Renderer2D.h"

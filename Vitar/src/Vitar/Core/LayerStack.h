@@ -7,7 +7,7 @@
 
 namespace Vitar
 {
-	class VITAR_API LayerStack
+	class LayerStack
 	{
 	public:
 		LayerStack();

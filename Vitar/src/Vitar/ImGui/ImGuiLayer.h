@@ -8,7 +8,7 @@
 
 namespace Vitar 
 {
-	class VITAR_API ImGuiLayer : public Layer
+	class ImGuiLayer : public Layer
 	{
 	public:
 		ImGuiLayer();

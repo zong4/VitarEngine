@@ -15,12 +15,20 @@ namespace Vitar
 	{
 		VITAR_PROFILE_FUNCTION();
 
-		m_CheckerboardTexture = Vitar::Texture2D::Create("assets/textures/wolf.png");
+		m_CheckerboardTexture = Texture2D::Create("assets/textures/wolf.png");
 
-		Vitar::FramebufferSpecification fbSpec;
+		FramebufferSpecification fbSpec;
 		fbSpec.Width = 1280;
 		fbSpec.Height = 720;
-		m_Framebuffer = Vitar::Framebuffer::Create(fbSpec);
+		m_Framebuffer = Framebuffer::Create(fbSpec);
+
+		m_ActiveScene = CreateRef<Scene>();
+
+		auto square = m_ActiveScene->CreateEntity();
+		m_ActiveScene->Reg().emplace<TransformComponent>(square);
+		m_ActiveScene->Reg().emplace<SpriteRendererComponent>(square, glm::vec4{ 0.0f, 1.0f, 0.0f, 1.0f });
+
+		m_SquareEntity = square;
 	}
 
 	void EditorLayer::OnDetach()
@@ -28,44 +36,37 @@ namespace Vitar
 		VITAR_PROFILE_FUNCTION();
 	}
 
-	void EditorLayer::OnUpdate(Vitar::Timestep ts)
+	void EditorLayer::OnUpdate(Timestep ts)
 	{
 		VITAR_PROFILE_FUNCTION();
+
+		// Resize
+		if (FramebufferSpecification spec = m_Framebuffer->GetSpecification();
+			m_ViewportSize.x > 0.0f && m_ViewportSize.y > 0.0f && // zero sized framebuffer is invalid
+			(spec.Width != m_ViewportSize.x || spec.Height != m_ViewportSize.y))
+		{
+			m_Framebuffer->Resize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
+			m_CameraController.OnResize(m_ViewportSize.x, m_ViewportSize.y);
+		}
 
 		// Update
 		if (m_ViewportFocused)
 			m_CameraController.OnUpdate(ts);
 
 		// Render
-		Vitar::Renderer2D::ResetStats();
-		{
-			VITAR_PROFILE_SCOPE("Renderer Prep");
-			m_Framebuffer->Bind();
-			Vitar::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
-			Vitar::RenderCommand::Clear();
-		}
+		Renderer2D::ResetStats();
+		m_Framebuffer->Bind();
+		RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
+		RenderCommand::Clear();
 
-		{
-			static float rotation = 0.0f;
-			rotation += ts * 50.0f;
+		Renderer2D::BeginScene(m_CameraController.GetCamera());
 
-			VITAR_PROFILE_SCOPE("Renderer Draw");
-			Vitar::Renderer2D::BeginScene(m_CameraController.GetCamera());
-			Vitar::Renderer2D::DrawQuad({ 0.0f, 0.0f, 0.1f }, { 1.0f, 1.0f }, 0.0f, { 1.0f, 1.0f, 1.0f, 0.5f }, m_CheckerboardTexture, 1.0f);
-			Vitar::Renderer2D::EndScene();
+		// Update scene
+		m_ActiveScene->OnUpdate(ts);
 
-			Vitar::Renderer2D::BeginScene(m_CameraController.GetCamera());
-			for (float y = -5.0f; y < 5.0f; y += 0.5f)
-			{
-				for (float x = -5.0f; x < 5.0f; x += 0.5f)
-				{
-					glm::vec4 color = { (x + 5.0f) / 10.0f, 0.4f, (y + 5.0f) / 10.0f, 0.7f };
-					Vitar::Renderer2D::DrawQuad({ x, y }, { 0.45f, 0.45f }, 0.0f, color);
-				}
-			}
-			Vitar::Renderer2D::EndScene();
-			m_Framebuffer->Unbind();
-		}
+		Renderer2D::EndScene();
+
+		m_Framebuffer->Unbind();
 	}
 
 	void EditorLayer::OnImGuiRender()
@@ -125,7 +126,7 @@ namespace Vitar
 				// which we can't undo at the moment without finer window depth/z control.
 				//ImGui::MenuItem("Fullscreen", NULL, &opt_fullscreen_persistant);
 
-				if (ImGui::MenuItem("Exit")) Vitar::Application::Get().Close();
+				if (ImGui::MenuItem("Exit")) Application::Get().Close();
 				ImGui::EndMenu();
 			}
 
@@ -141,7 +142,8 @@ namespace Vitar
 		ImGui::Text("Vertices: %d", stats.GetTotalVertexCount());
 		ImGui::Text("Indices: %d", stats.GetTotalIndexCount());
 
-		ImGui::ColorEdit4("Square Color", glm::value_ptr(m_SquareColor));
+		glm::vec4 squareColor = m_ActiveScene->Reg().get<SpriteRendererComponent>(m_SquareEntity).Color;
+		ImGui::ColorEdit4("Square Color", glm::value_ptr(squareColor));
 
 		ImGui::End();
 
@@ -153,13 +155,7 @@ namespace Vitar
 		Application::Get().GetImGuiLayer()->BlockEvents(!m_ViewportFocused || !m_ViewportHovered);
 
 		ImVec2 viewportPanelSize = ImGui::GetContentRegionAvail();
-		if (m_ViewportSize != *((glm::vec2*)&viewportPanelSize))
-		{
-			m_Framebuffer->Resize((uint32_t)viewportPanelSize.x, (uint32_t)viewportPanelSize.y);
-			m_ViewportSize = { viewportPanelSize.x, viewportPanelSize.y };
-
-			m_CameraController.OnResize(viewportPanelSize.x, viewportPanelSize.y);
-		}
+		m_ViewportSize = { viewportPanelSize.x, viewportPanelSize.y };
 
 		uint32_t textureID = m_Framebuffer->GetColorAttachmentRendererID();
 		ImGui::Image((void*)textureID, ImVec2{ m_ViewportSize.x, m_ViewportSize.y }, ImVec2{ 0, 1 }, ImVec2{ 1, 0 });
@@ -169,7 +165,7 @@ namespace Vitar
 		ImGui::End();
 	}
 
-	void EditorLayer::OnEvent(Vitar::Event& e)
+	void EditorLayer::OnEvent(Event& e)
 	{
 		m_CameraController.OnEvent(e);
 	}

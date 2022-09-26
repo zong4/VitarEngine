@@ -18,7 +18,7 @@ namespace Vitar
 	};
 
 	// Interface representing a desktop system based Window
-	class VITAR_API Window
+	class Window
 	{
 	public:
 		using EventCallbackFn = std::function<void(Event&)>;
