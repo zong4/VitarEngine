@@ -18,6 +18,7 @@
 #include "Vitar/ImGui/ImGuiLayer.h"
 
 #include "Vitar/Scene/Scene.h"
+#include "Vitar/Scene/Entity.h"
 #include "Vitar/Scene/Components.h"
 
 // ---Renderer------------------------

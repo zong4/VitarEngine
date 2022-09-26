@@ -123,6 +123,7 @@ project "Sandbox"
         "Vitar/vendor",
         "Vitar/vendor/Glad/include",
         "%{IncludeDir.glm}",
+        "%{IncludeDir.entt}",
     }
 
     links

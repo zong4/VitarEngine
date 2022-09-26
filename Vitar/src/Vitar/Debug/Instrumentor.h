@@ -100,6 +100,7 @@ namespace Vitar
 			static Instrumentor instance;
 			return instance;
 		}
+
 	private:
 		Instrumentor()
 			: m_CurrentSession(nullptr)
