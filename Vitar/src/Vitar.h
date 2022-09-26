@@ -12,7 +12,7 @@
 
 #include "Vitar/Core/Input.h"
 #include "Vitar/Core/KeyCodes.h"
-#include "Vitar/Core/MouseButtonCodes.h"
+#include "Vitar/Core/MouseCodes.h"
 #include "Vitar/Renderer/OrthographicCameraController.h"
 
 #include "Vitar/ImGui/ImGuiLayer.h"

@@ -13,21 +13,21 @@ void Vitar::OrthographicCameraController::OnUpdate(Timestep timestep)
 {
 	VITAR_PROFILE_FUNCTION();
 
-	if (Input::IsKeyPressed(VITAR_KEY_A))
+	if (Input::IsKeyPressed(Key::A))
 		m_CameraPosition.x -= m_CameraTranslationSpeed * timestep;
-	else if (Input::IsKeyPressed(VITAR_KEY_D))
+	else if (Input::IsKeyPressed(Key::D))
 		m_CameraPosition.x += m_CameraTranslationSpeed * timestep;
 
-	if (Input::IsKeyPressed(VITAR_KEY_S))
+	if (Input::IsKeyPressed(Key::S))
 		m_CameraPosition.y -= m_CameraTranslationSpeed * timestep;
-	else if (Input::IsKeyPressed(VITAR_KEY_W))
+	else if (Input::IsKeyPressed(Key::W))
 		m_CameraPosition.y += m_CameraTranslationSpeed * timestep;
 
 	if (m_Rotation)
 	{
-		if (Input::IsKeyPressed(VITAR_KEY_Q))
+		if (Input::IsKeyPressed(Key::Q))
 			m_CameraRotation += m_CameraRotationSpeed * timestep;
-		else if (Input::IsKeyPressed(VITAR_KEY_E))
+		else if (Input::IsKeyPressed(Key::E))
 			m_CameraRotation -= m_CameraRotationSpeed * timestep;
 
 		m_Camera.SetRotation(m_CameraRotation);
