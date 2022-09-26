@@ -1,5 +1,8 @@
 #pragma once
 
+#include <functional>
+
+#include "Vitar/Debug/Instrumentor.h"
 #include "Vitar/Core/Base.h"
 
 namespace Vitar 

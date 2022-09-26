@@ -8,3 +8,4 @@ Debug-windows-x86_64/
 *.filters
 *.user
 Sandbox/**.json
+VitarEditor/**.json

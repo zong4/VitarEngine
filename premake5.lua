@@ -1,8 +1,14 @@
--- premake5.lua
+include "./vendor/premake/premake_customization/solution_items.lua"
+
 workspace "Vitar"
     architecture "x64"
     startproject "VitarEditor"
     configurations { "Debug", "Release", "Dist" }
+
+    solution_items
+	{
+		".editorconfig",
+	}
 
     flags
 	{
@@ -13,200 +19,20 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}
-IncludeDir["GLFW"] = "Vitar/vendor/GLFW/include"
-IncludeDir["Glad"] = "Vitar/vendor/Glad/include"
-IncludeDir["ImGui"] = "Vitar/vendor/imgui"
-IncludeDir["glm"] = "Vitar/vendor/glm"
-IncludeDir["stb_image"] = "Vitar/vendor/stb_image"
-IncludeDir["entt"] = "Vitar/vendor/entt/include"
+IncludeDir["GLFW"] = "%{wks.location}/Vitar/vendor/GLFW/include"
+IncludeDir["Glad"] = "%{wks.location}/Vitar/vendor/Glad/include"
+IncludeDir["ImGui"] = "%{wks.location}/Vitar/vendor/imgui"
+IncludeDir["glm"] = "%{wks.location}/Vitar/vendor/glm"
+IncludeDir["stb_image"] = "%{wks.location}/Vitar/vendor/stb_image"
+IncludeDir["entt"] = "%{wks.location}/Vitar/vendor/entt/include"
 
 group "Dependencies"
+    include "vendor/premake"
 	include "Vitar/vendor/GLFW"
 	include "Vitar/vendor/Glad"
 	include "Vitar/vendor/imgui"
 group ""
 
-project "Vitar"
-    location "Vitar"
-    kind "StaticLib"
-    language "C++"
-    cppdialect "C++17"
-    staticruntime "on"
-
-    targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-    objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
-
-    pchheader "VitarPCH.h"
-    pchsource "Vitar/src/VitarPCH.cpp"
-
-   files
-   {
-        "%{prj.name}/src/**.h",
-        "%{prj.name}/src/**.cpp",
-        "%{prj.name}/vendor/stb_image/**.h",
-        "%{prj.name}/vendor/stb_image/**.cpp",
-        "%{prj.name}/vendor/glm/glm/**.hpp",
-        "%{prj.name}/vendor/glm/glm/**.inl",
-   }
-
-   defines
-   {
-        "_CRT_SECURE_NO_WARNINGS",
-        "GLFW_INCLUDE_NONE",
-   }
-
-   includedirs
-   {
-        "%{prj.name}/src",
-        "%{prj.name}/vendor/spdlog/include",
-        "%{IncludeDir.GLFW}",
-        "%{IncludeDir.Glad}",
-        "%{IncludeDir.ImGui}",
-        "%{IncludeDir.glm}",
-        "%{IncludeDir.stb_image}",
-        "%{IncludeDir.entt}",
-   }
-
-   links
-   {
-        "GLFW",
-        "Glad",
-        "ImGui",
-        "opengl32.lib"
-   }
-
-   filter "system:windows"
-        systemversion "latest"
-
-        defines
-        {
-            -- "VITAR_PLANTFORM_WINDOWS",
-            -- "VITAR_BUILD_DLL",
-            -- "GLFW_INCLUDE_NONE",
-        }
-
-    filter "configurations:Debug"
-        defines "VITAR_DEBUG"
-        runtime "Debug"
-        symbols "on"
-
-    filter "configurations:Release"
-        defines "VITAR_Release"
-        runtime "Release"
-        optimize "on"
-
-    filter "configurations:Dist"
-        defines "VITAR_Dist"
-        runtime "Release"
-        optimize "on"
-
-project "Sandbox"
-    location "Sandbox"
-    kind "ConsoleApp"
-    language "C++"
-    cppdialect "C++17"
-    staticruntime "on"
-
-    targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-    objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
-
-    files
-    {
-        "%{prj.name}/src/**.h",
-        "%{prj.name}/src/**.cpp",
-    }
- 
-    includedirs
-    {
-        "Vitar/vendor/spdlog/include",
-        "Vitar/src",
-        "Vitar/vendor",
-        "Vitar/vendor/Glad/include",
-        "%{IncludeDir.glm}",
-        "%{IncludeDir.entt}",
-    }
-
-    links
-    {
-        "Vitar",
-    }
-
-    filter "system:windows"
-        systemversion "latest"
-
-        defines
-        {
-            "VITAR_PLANTFORM_WINDOWS",
-            -- "IMGUI_API=__declspec(dllimport)",
-        }
-
-    filter "configurations:Debug"
-        defines "VITAR_DEBUG"
-        runtime "Debug"
-        symbols "on"
-
-    filter "configurations:Release"
-        defines "VITAR_Release"
-        runtime "Release"
-        optimize "on"
-
-    filter "configurations:Dist"
-        defines "VITAR_Dist"
-        runtime "Release"
-        optimize "on"
-
-project "VitarEditor"
-    location "VitarEditor"
-	kind "ConsoleApp"
-	language "C++"
-	cppdialect "C++17"
-	staticruntime "on"
-
-	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
-
-	files
-	{
-		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp",
-        "%{prj.name}/src/assets/shaders/**.**",
-        "%{prj.name}/src/assets/textures/**.**",
-	}
-
-	includedirs
-	{
-		"Vitar/vendor/spdlog/include",
-		"Vitar/src",
-		"Vitar/vendor",
-        "Vitar/vendor/Glad/include",
-		"%{IncludeDir.glm}",
-        "%{IncludeDir.entt}",
-	}
-
-	links
-	{
-		"Vitar"
-	}
-
-	filter "system:windows"
-		systemversion "latest"
-
-        defines
-        {
-            "VITAR_PLANTFORM_WINDOWS",
-        }
-
-	filter "configurations:Debug"
-		defines "VITAR_DEBUG"
-		runtime "Debug"
-		symbols "on"
-
-	filter "configurations:Release"
-		defines "VITAR_RELEASE"
-		runtime "Release"
-		optimize "on"
-
-	filter "configurations:Dist"
-		defines "VITAR_DIST"
-		runtime "Release"
-		optimize "on"
+include "Vitar"
+include "Sandbox"
+include "VitarEditor"

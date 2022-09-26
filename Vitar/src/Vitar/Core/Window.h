@@ -1,6 +1,6 @@
 #pragma once
 
-#include "VitarPCH.h"
+#include <sstream>
 
 #include "Vitar/Core/Base.h"
 #include "Vitar/Events/Event.h"
@@ -22,8 +22,11 @@ namespace Vitar
 	{
 	public:
 		using EventCallbackFn = std::function<void(Event&)>;
-		virtual ~Window(){}
+
+		virtual ~Window() = default;
+
 		virtual void OnUpdate() = 0;
+
 		virtual uint32_t GetWidth() const = 0;
 		virtual uint32_t GetHeight() const = 0;
 
@@ -34,6 +37,6 @@ namespace Vitar
 
 		virtual void* GetNativeWindow() const = 0;
 
-		static Window* Create(const WindowProps& props = WindowProps());
+		static Scope<Window> Create(const WindowProps& props = WindowProps());
 	};
 }

@@ -19,6 +19,7 @@
 
 #include "Vitar/Scene/Scene.h"
 #include "Vitar/Scene/Entity.h"
+#include "Vitar/Scene/ScriptableEntity.h"
 #include "Vitar/Scene/Components.h"
 
 // ---Renderer------------------------

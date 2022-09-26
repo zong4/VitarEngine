@@ -11,6 +11,8 @@
 #include <mutex>
 #include <sstream>
 
+#include "Vitar/Core/Log.h"
+
 namespace Vitar 
 {
 	using FloatingPointMicroseconds = std::chrono::duration<double, std::micro>;
