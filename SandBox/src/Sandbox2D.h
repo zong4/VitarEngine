@@ -33,5 +33,5 @@ private:
 	Vitar::Ref<Vitar::VertexArray> m_VertexArray;
 	Vitar::Ref<Vitar::Texture2D> m_Texture2D;
 
-	glm::vec4 m_Color = { 0.2f, 0.3f, 0.8f, 1.0f };
+	glm::vec4 m_SquareColor = { 0.2f, 0.3f, 0.8f, 1.0f };
 };

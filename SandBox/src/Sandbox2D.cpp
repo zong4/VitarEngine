@@ -8,7 +8,7 @@ void Sandbox2D::OnAttach()
 {
 	VITAR_PROFILE_FUNCTION();
 
-	m_Texture2D = Vitar::Texture2D::Create("src/assets/textures/wolf.png");
+	m_Texture2D = Vitar::Texture2D::Create("assets/textures/wolf.png");
 }
 
 void Sandbox2D::OnDetach()
@@ -61,6 +61,8 @@ void Sandbox2D::OnUpdate(Vitar::Timestep timestep)
 
 void Sandbox2D::OnImGuiRender()
 {
+	VITAR_PROFILE_FUNCTION();
+
 	ImGui::Begin("Settings");
 
 	auto stats = Vitar::Renderer2D::GetStats();
@@ -70,8 +72,7 @@ void Sandbox2D::OnImGuiRender()
 	ImGui::Text("Vertices: %d", stats.GetTotalVertexCount());
 	ImGui::Text("Indices: %d", stats.GetTotalIndexCount());
 
-	ImGui::ColorEdit4("Color", glm::value_ptr(m_Color));
-
+	ImGui::ColorEdit4("Square Color", glm::value_ptr(m_SquareColor));
 	ImGui::End();
 }
 

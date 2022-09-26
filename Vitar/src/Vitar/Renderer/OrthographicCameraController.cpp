@@ -47,6 +47,12 @@ void Vitar::OrthographicCameraController::OnEvent(Event& e)
 	dispatcher.Dispatch<WindowResizeEvent>(VITAR_BIND_EVENT_FN(OrthographicCameraController::OnWindowResized));
 }
 
+void Vitar::OrthographicCameraController::OnResize(float width, float height)
+{
+	m_AspectRatio = width / height;
+	m_Camera.SetProjection(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel);
+}
+
 bool Vitar::OrthographicCameraController::OnMouseScrolled(MouseScrolledEvent& e)
 {
 	VITAR_PROFILE_FUNCTION();
@@ -61,7 +67,6 @@ bool Vitar::OrthographicCameraController::OnWindowResized(WindowResizeEvent& e)
 {
 	VITAR_PROFILE_FUNCTION();
 
-	m_AspectRatio = (float)e.GetWidth() / (float)e.GetHeight();
-	m_Camera.SetProjection(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel);
+	OnResize((float)e.GetWidth(), (float)e.GetHeight());
 	return false;
 }

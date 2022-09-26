@@ -1,8 +1,13 @@
 -- premake5.lua
 workspace "Vitar"
     architecture "x64"
-    startproject "Sandbox"
+    startproject "VitarEditor"
     configurations { "Debug", "Release", "Dist" }
+
+    flags
+	{
+		"MultiProcessorCompile",
+	}
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
@@ -14,9 +19,11 @@ IncludeDir["ImGui"] = "Vitar/vendor/imgui"
 IncludeDir["glm"] = "Vitar/vendor/glm"
 IncludeDir["stb_image"] = "Vitar/vendor/stb_image"
 
-include "Vitar/vendor/GLFW"
-include "Vitar/vendor/Glad"
-include "Vitar/vendor/imgui"
+group "Dependencies"
+	include "Vitar/vendor/GLFW"
+	include "Vitar/vendor/Glad"
+	include "Vitar/vendor/imgui"
+group ""
 
 project "Vitar"
     location "Vitar"
@@ -44,6 +51,7 @@ project "Vitar"
    defines
    {
         "_CRT_SECURE_NO_WARNINGS",
+        "GLFW_INCLUDE_NONE",
    }
 
    includedirs
@@ -105,13 +113,10 @@ project "Sandbox"
     {
         "%{prj.name}/src/**.h",
         "%{prj.name}/src/**.cpp",
-        "%{prj.name}/src/assets/shaders/**.**",
-        "%{prj.name}/src/assets/textures/**.**",
     }
  
     includedirs
     {
-        "%{prj.name}/src",
         "Vitar/vendor/spdlog/include",
         "Vitar/src",
         "Vitar/vendor",
@@ -147,3 +152,59 @@ project "Sandbox"
         defines "VITAR_Dist"
         runtime "Release"
         optimize "on"
+
+project "VitarEditor"
+    location "VitarEditor"
+	kind "ConsoleApp"
+	language "C++"
+	cppdialect "C++17"
+	staticruntime "on"
+
+	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+	files
+	{
+		"%{prj.name}/src/**.h",
+		"%{prj.name}/src/**.cpp",
+        "%{prj.name}/src/assets/shaders/**.**",
+        "%{prj.name}/src/assets/textures/**.**",
+	}
+
+	includedirs
+	{
+		"Vitar/vendor/spdlog/include",
+		"Vitar/src",
+		"Vitar/vendor",
+        "Vitar/vendor/Glad/include",
+		"%{IncludeDir.glm}",
+	}
+
+	links
+	{
+		"Vitar"
+	}
+
+	filter "system:windows"
+		systemversion "latest"
+
+        defines
+        {
+            "VITAR_PLANTFORM_WINDOWS",
+            "IMGUI_API=__declspec(dllimport)",
+        }
+
+	filter "configurations:Debug"
+		defines "VITAR_DEBUG"
+		runtime "Debug"
+		symbols "on"
+
+	filter "configurations:Release"
+		defines "VITAR_RELEASE"
+		runtime "Release"
+		optimize "on"
+
+	filter "configurations:Dist"
+		defines "VITAR_DIST"
+		runtime "Release"
+		optimize "on"

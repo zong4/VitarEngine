@@ -15,7 +15,7 @@ namespace Vitar
 	class VITAR_API Application
 	{
 	public:
-		Application();
+		Application(const std::string& name = "Vitar App");
 		virtual ~Application();
 
 		void Run();
@@ -27,6 +27,8 @@ namespace Vitar
 
 		inline static Application& Get() { return *s_Instance; }
 		inline Window& GetWindow() { return *m_Window; }
+
+		void Close();
 
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);

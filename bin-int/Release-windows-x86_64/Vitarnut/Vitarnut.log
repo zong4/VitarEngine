@@ -1,0 +1,4 @@
+﻿  EditorLayer.cpp
+  VitarEditorApp.cpp
+D:\Code\VS\VitarEngine\Vitar\src\Vitar\Core\Base.h(16,1): fatal error C1189: #error:  Vitar only supports Windows! (编译源文件 src\EditorLayer.cpp)
+D:\Code\VS\VitarEngine\Vitar\src\Vitar\Core\Base.h(16,1): fatal error C1189: #error:  Vitar only supports Windows! (编译源文件 src\VitarEditorApp.cpp)

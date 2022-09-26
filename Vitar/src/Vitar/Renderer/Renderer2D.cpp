@@ -90,7 +90,7 @@ namespace Vitar
 		}
 		
 		// TextureShader
-		s_Data.TextureShader = Shader::Create("src/assets/shaders/Texture.glsl");
+		s_Data.TextureShader = Shader::Create("assets/shaders/Texture.glsl");
 		s_Data.TextureShader->Bind();
 
 		s_Data.TextureShader->SetIntArray("u_Textures", samplers, s_Data.MaxTextureSlots);

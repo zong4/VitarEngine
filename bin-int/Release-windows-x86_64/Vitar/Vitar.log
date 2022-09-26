@@ -1,0 +1,2 @@
+﻿  VitarPCH.cpp
+D:\Code\VS\VitarEngine\Vitar\src\Vitar\Core\Base.h(16,1): fatal error C1189: #error:  Vitar only supports Windows!
