@@ -1,12 +1,16 @@
 [submodule "Vitar/vendor/spdlog"]
 	path = Vitar/vendor/spdlog
 	url = https://github.com/gabime/spdlog
+	branch = v1.x
 [submodule "Vitar/vendor/GLFW"]
 	path = Vitar/vendor/GLFW
 	url = https://github.com/TheCherno/glfw
+	branch = master
 [submodule "Vitar/vendor/imgui"]
 	path = Vitar/vendor/imgui
 	url = https://github.com/TheCherno/imgui
+	branch = docking
 [submodule "Vitar/vendor/glm"]
 	path = Vitar/vendor/glm
 	url = https://github.com/g-truc/glm
+	branch = master
