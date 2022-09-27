@@ -14,3 +14,6 @@
 	path = Vitar/vendor/glm
 	url = https://github.com/g-truc/glm
 	branch = master
+[submodule "Vitar/vendor/yaml-cpp"]
+	path = Vitar/vendor/yaml-cpp
+	url = https://github.com/thecherno/yaml-cpp
