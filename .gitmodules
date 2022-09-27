@@ -17,3 +17,6 @@
 [submodule "Vitar/vendor/yaml-cpp"]
 	path = Vitar/vendor/yaml-cpp
 	url = https://github.com/thecherno/yaml-cpp
+[submodule "Vitar/vendor/ImGuizmo"]
+	path = Vitar/vendor/ImGuizmo
+	url = https://github.com/thecherno/imguizmo

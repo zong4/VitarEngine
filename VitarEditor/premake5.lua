@@ -23,6 +23,7 @@ project "VitarEditor"
         "%{wks.location}/Vitar/vendor/Glad/include",
 		"%{IncludeDir.glm}",
 		"%{IncludeDir.entt}",
+		"%{IncludeDir.ImGuizmo}",
 	}
 
 	links
