@@ -1,8 +1,14 @@
 #pragma once
 
 #include "Base.h"
+
+// This ignores all warnings raised inside External headers
+#pragma warning(push, 0)
+
 #include "spdlog/spdlog.h"
 #include "spdlog/fmt/ostr.h"
+
+#pragma warning(pop)
 
 namespace Vitar
 {
@@ -25,12 +31,12 @@ namespace Vitar
 #define VITAR_CORE_INFO(...)      ::Vitar::Log::GetCoreLogger()->info(__VA_ARGS__)
 #define VITAR_CORE_WARN(...)      ::Vitar::Log::GetCoreLogger()->warn(__VA_ARGS__)
 #define VITAR_CORE_ERROR(...)     ::Vitar::Log::GetCoreLogger()->error(__VA_ARGS__)
-#define VITAR_CORE_FATAL(...)     ::Vitar::Log::GetCoreLogger()->fatal(__VA_ARGS__)
+#define VITAR_CORE_CRITICAL(...)  ::Vitar::Log::GetCoreLogger()->critical(__VA_ARGS__)
 
 // Client log macros
 #define VITAR_TRACE(...)          ::Vitar::Log::GetClientLogger()->trace(__VA_ARGS__)
 #define VITAR_INFO(...)           ::Vitar::Log::GetClientLogger()->info(__VA_ARGS__)
 #define VITAR_WARN(...)           ::Vitar::Log::GetClientLogger()->warn(__VA_ARGS__)
 #define VITAR_ERROR(...)          ::Vitar::Log::GetClientLogger()->error(__VA_ARGS__)
-#define VITAR_FATAL(...)          ::Vitar::Log::GetClientLogger()->fatal(__VA_ARGS__)
+#define VITAR_CRITICAL(...)       ::Vitar::Log::GetClientLogger()->critical(__VA_ARGS__)
 

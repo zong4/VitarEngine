@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Vitar/Core/Base.h"
-#include "Vitar/Core/Log.h"
 #include "Vitar/Scene/Scene.h"
 #include "Vitar/Scene/Entity.h"
 
@@ -19,6 +18,7 @@ namespace Vitar
 
 	private:
 		void DrawEntityNode(Entity entity);
+		void DrawComponents(Entity entity);
 
 	private:
 		Ref<Scene> m_Context;

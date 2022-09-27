@@ -18,14 +18,9 @@
 	#define VITAR_DEBUGBREAK()
 #endif
 
-// TODO: Make this macro able to take in no arguments except condition
-#ifdef VITAR_ENABLE_ASSERTS
-	#define VITAR_ASSERT(x, ...) { if(!(x)) { VITAR_ERROR("Assertion Failed: {0}", __VA_ARGS__); VITAR_DEBUGBREAK(); } }
-	#define VITAR_CORE_ASSERT(x, ...) { if(!(x)) { VITAR_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); VITAR_DEBUGBREAK(); } }
-#else
-	#define VITAR_ASSERT(x, ...)
-	#define VITAR_CORE_ASSERT(x, ...)
-#endif
+#define VITAR_EXPAND_MACRO(x) x
+#define VITAR_STRINGIFY_MACRO(x) #x
+
 
 #define BIT(x) (1 << x)
 
@@ -51,3 +46,6 @@ namespace Vitar
 		return std::make_shared<T>(std::forward<Args>(args)...);
 	}
 }
+
+#include "Vitar/Core/Log.h"
+#include "Vitar/Core/Assert.h"

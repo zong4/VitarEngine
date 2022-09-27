@@ -7,6 +7,7 @@
 #include "Vitar/Core/Application.h"
 #include "Vitar/Core/Layer.h"
 #include "Vitar/Core/Log.h"
+#include "Vitar/Core/Assert.h"
 
 #include "Vitar/Core/Timestep.h"
 

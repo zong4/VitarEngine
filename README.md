@@ -1,4 +1,5 @@
-# Vitar Engine
+# Vitar Engine [![License](https://img.shields.io/github/license/TheCherno/Hazel.svg)](https://github.com/zong4/VitarEngine/blob/main/LICENSE)
+
 
 <p align="center">
   <a href="https://github.com/zong4/VitarEngine">
