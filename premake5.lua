@@ -25,12 +25,15 @@ IncludeDir["ImGui"] = "%{wks.location}/Vitar/vendor/imgui"
 IncludeDir["glm"] = "%{wks.location}/Vitar/vendor/glm"
 IncludeDir["stb_image"] = "%{wks.location}/Vitar/vendor/stb_image"
 IncludeDir["entt"] = "%{wks.location}/Vitar/vendor/entt/include"
+IncludeDir["yaml_cpp"] = "%{wks.location}/Vitar/vendor/yaml-cpp/include"
 
 group "Dependencies"
     include "vendor/premake"
 	include "Vitar/vendor/GLFW"
 	include "Vitar/vendor/Glad"
 	include "Vitar/vendor/imgui"
+    include "Vitar/vendor/yaml-cpp"
+
 group ""
 
 include "Vitar"
