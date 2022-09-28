@@ -1,6 +1,7 @@
 # Directories
 .vs/
 Debug-windows-x86_64/
+Sandbox/
 
 # Files
 *.sln
