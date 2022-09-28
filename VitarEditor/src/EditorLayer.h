@@ -3,6 +3,8 @@
 #include "Vitar.h"
 #include "Panels/SceneHierarchyPanel.h"
 
+#include "Vitar/Renderer/EditorCamera.h"
+
 namespace Vitar 
 {
 	class EditorLayer : public Layer
@@ -20,6 +22,7 @@ namespace Vitar
 
 	private:
 		bool OnKeyPressed(KeyPressedEvent& e);
+		bool OnMouseButtonPressed(MouseButtonPressedEvent& e);
 
 		void NewScene();
 		void OpenScene();
@@ -38,12 +41,17 @@ namespace Vitar
 		Entity m_CameraEntity;
 		Entity m_SecondCamera;
 
+		Entity m_HoveredEntity;
+
 		bool m_PrimaryCamera = true;
+
+		EditorCamera m_EditorCamera;
 
 		Ref<Texture2D> m_CheckerboardTexture;
 
 		bool m_ViewportFocused = false, m_ViewportHovered = false;
 		glm::vec2 m_ViewportSize = { 0.0f, 0.0f };
+		glm::vec2 m_ViewportBounds[2];
 
 		glm::vec4 m_SquareColor = { 0.2f, 0.3f, 0.8f, 1.0f };
 

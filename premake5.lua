@@ -38,5 +38,5 @@ group "Dependencies"
 group ""
 
 include "Vitar"
-include "Sandbox"
+-- include "Sandbox"
 include "VitarEditor"

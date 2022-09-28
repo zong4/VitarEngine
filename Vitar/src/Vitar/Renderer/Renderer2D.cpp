@@ -10,6 +10,9 @@ namespace Vitar
 		glm::vec2 TexCoord;
 		float TexIndex;
 		float TilingFactor;
+
+		// Editor-only
+		int EntityID;
 	};
 
 	struct Renderer2DData
@@ -52,7 +55,8 @@ namespace Vitar
 			{ShaderDataType::Float4, "a_Color"},
 			{ShaderDataType::Float2, "a_TexCoord"},
 			{ShaderDataType::Float, "a_TexIndex"},
-			{ ShaderDataType::Float, "a_TilingFactor" }
+			{ ShaderDataType::Float, "a_TilingFactor" },
+			{ ShaderDataType::Int,    "a_EntityID"     },
 		});
 		s_Data.QuadVertexArray->AddVertexBuffer(s_Data.QuadVertexBuffer);
 
@@ -123,6 +127,18 @@ namespace Vitar
 		StartBatch();
 	}
 
+	void Renderer2D::BeginScene(const EditorCamera& camera)
+	{
+		VITAR_PROFILE_FUNCTION();
+
+		glm::mat4 viewProj = camera.GetViewProjection();
+
+		s_Data.TextureShader->Bind();
+		s_Data.TextureShader->SetMat4("u_ViewProjection", viewProj);
+
+		StartBatch();
+	}
+
 	void Renderer2D::BeginScene(const OrthographicCamera& camera)
 	{
 		VITAR_PROFILE_FUNCTION();
@@ -172,21 +188,24 @@ namespace Vitar
 		StartBatch();
 	}
 
-	void Renderer2D::DrawQuad(const glm::vec2& position, const glm::vec2& size, float rotation, const glm::vec4& color, const Ref<Texture2D>& texture, float tilingFactor)
+	void Renderer2D::DrawQuad(const glm::vec2& position, const glm::vec2& size, float rotation, const glm::vec4& color,
+		const Ref<Texture2D>& texture, float tilingFactor, int entityID)
 	{
-		DrawQuad({ position.x, position.y, 0.0f }, size, rotation, color, texture, tilingFactor);
+		DrawQuad({ position.x, position.y, 0.0f }, size, rotation, color, texture, tilingFactor, entityID);
 	}
 
-	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, float rotation, const glm::vec4& color, const Ref<Texture2D>& texture, float tilingFactor)
+	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, float rotation, const glm::vec4& color,
+		const Ref<Texture2D>& texture, float tilingFactor, int entityID)
 	{
 		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position)
 			* glm::rotate(glm::mat4(1.0f), glm::radians(rotation), { 0.0f, 0.0f, 1.0f })
 			* glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
 
-		DrawQuad(transform, color, texture, tilingFactor);
+		DrawQuad(transform, color, texture, tilingFactor, entityID);
 	}
 
-	void Renderer2D::DrawQuad(const glm::mat4& transform, const glm::vec4& color, const Ref<Texture2D>& texture, float tilingFactor)
+	void Renderer2D::DrawQuad(const glm::mat4& transform, const glm::vec4& color, 
+		const Ref<Texture2D>& texture, float tilingFactor, int entityID)
 	{
 		VITAR_PROFILE_FUNCTION();
 
@@ -223,12 +242,18 @@ namespace Vitar
 			s_Data.QuadVertexBufferPtr->TexCoord = textureCoords[i];
 			s_Data.QuadVertexBufferPtr->TexIndex = textureIndex;
 			s_Data.QuadVertexBufferPtr->TilingFactor = tilingFactor;
+			s_Data.QuadVertexBufferPtr->EntityID = entityID;
 			s_Data.QuadVertexBufferPtr++;
 		}
 
 		s_Data.QuadIndexCount += 6;
 
 		s_Data.Stats.QuadCount++;
+	}
+
+	void Renderer2D::DrawSprite(const glm::mat4& transform, SpriteRendererComponent& src, float tilingFactor, int entityID)
+	{
+		DrawQuad(transform, src.Color, s_Data.WhiteTexture, tilingFactor, entityID);
 	}
 
 	void Renderer2D::ResetStats()
