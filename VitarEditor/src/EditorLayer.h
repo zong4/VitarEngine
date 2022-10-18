@@ -2,6 +2,7 @@
 
 #include "Vitar.h"
 #include "Panels/SceneHierarchyPanel.h"
+#include "Panels/ContentBrowserPanel.h"
 
 #include "Vitar/Renderer/EditorCamera.h"
 
@@ -59,5 +60,6 @@ namespace Vitar
 
 		// Panels
 		SceneHierarchyPanel m_SceneHierarchyPanel;
+		ContentBrowserPanel m_ContentBrowserPanel;
 	};
 }
