@@ -1,12 +1,20 @@
-# Directories
-.vs/
+# Binaries
 Debug-windows-x86_64/
-Sandbox/
 
-# Files
-*.sln
-*.vcxproj
-*.filters
-*.user
+# Vitar Files
+*.log
 Sandbox/**.json
 VitarEditor/**.json
+
+# VS Files and Directories
+.vs/
+**.sln
+**.vcxproj
+**.vcxproj.filters
+**.vcxproj.user
+
+# Directories
+Sandbox/
+Vitar/vendor/VulkanSDK
+VitarEditor/assets/cache
+scripts/__pycache__
