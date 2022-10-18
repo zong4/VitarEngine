@@ -1,7 +1,7 @@
 #include "VitarPCH.h"
-#include "Shader.h"
+#include "Vitar/Renderer/Shader.h"
 
-#include "Renderer.h"
+#include "Vitar/Renderer/Renderer.h"
 #include "Platform/OpenGL/OpenGLShader.h"
 
 namespace Vitar
@@ -10,8 +10,8 @@ namespace Vitar
 	{
 		switch (Renderer::GetAPI())
 		{
-		case RendererAPI::API::None:      VITAR_CORE_ASSERT(false, "RenderAPI::None is currently not supported!"); return nullptr;
-		case RendererAPI::API::OpenGL:    return std::make_shared<OpenGLShader>(filepath);
+		case RendererAPI::API::None:    VITAR_CORE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
+		case RendererAPI::API::OpenGL:  return CreateRef<OpenGLShader>(filepath);
 		}
 
 		VITAR_CORE_ASSERT(false, "Unknown RendererAPI!");
@@ -22,25 +22,24 @@ namespace Vitar
 	{
 		switch (Renderer::GetAPI())
 		{
-			case RendererAPI::API::None:      VITAR_CORE_ASSERT(false, "RenderAPI::None is currently not supported!"); return nullptr;
-			case RendererAPI::API::OpenGL:    return std::make_shared<OpenGLShader>(name, vertexSrc, fragmentSrc);
+		case RendererAPI::API::None:    VITAR_CORE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
+		case RendererAPI::API::OpenGL:  return CreateRef<OpenGLShader>(name, vertexSrc, fragmentSrc);
 		}
 
 		VITAR_CORE_ASSERT(false, "Unknown RendererAPI!");
 		return nullptr;
 	}
 
-	void ShaderLibrary::Add(const Ref<Shader>& shader)
+	void ShaderLibrary::Add(const std::string& name, const Ref<Shader>& shader)
 	{
-		auto& name = shader->GetName();
 		VITAR_CORE_ASSERT(!Exists(name), "Shader already exists!");
 		m_Shaders[name] = shader;
 	}
 
-	void ShaderLibrary::Add(const std::string name, const Ref<Shader>& shader)
+	void ShaderLibrary::Add(const Ref<Shader>& shader)
 	{
-		VITAR_CORE_ASSERT(!Exists(name), "Shader already exists!");
-		m_Shaders[name] = shader;
+		auto& name = shader->GetName();
+		Add(name, shader);
 	}
 
 	Ref<Shader> ShaderLibrary::Load(const std::string& filepath)

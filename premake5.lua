@@ -2,7 +2,7 @@ include "./vendor/premake/premake_customization/solution_items.lua"
 include "Dependencies.lua"
 
 workspace "Vitar"
-    architecture "x64"
+    architecture "x86_64"
     startproject "VitarEditor"
     configurations { "Debug", "Release", "Dist" }
 
@@ -24,7 +24,6 @@ group "Dependencies"
 	include "Vitar/vendor/Glad"
 	include "Vitar/vendor/imgui"
     include "Vitar/vendor/yaml-cpp"
-
 group ""
 
 include "Vitar"

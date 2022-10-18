@@ -2,7 +2,7 @@ project "Vitar"
     kind "StaticLib"
     language "C++"
     cppdialect "C++17"
-    staticruntime "on"
+    staticruntime "off"
 
 	targetdir ("%{wks.location}/bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("%{wks.location}/bin-int/" .. outputdir .. "/%{prj.name}")
@@ -18,14 +18,15 @@ project "Vitar"
         "vendor/stb_image/**.cpp",
         "vendor/glm/glm/**.hpp",
         "vendor/glm/glm/**.inl",
+
         "vendor/ImGuizmo/ImGuizmo.h",
 		"vendor/ImGuizmo/ImGuizmo.cpp",
    }
 
    defines
    {
-        "_CRT_SECURE_NO_WARNINGS",
-        "GLFW_INCLUDE_NONE",
+		"_CRT_SECURE_NO_WARNINGS",
+		"GLFW_INCLUDE_NONE",
    }
 
    includedirs
@@ -40,6 +41,7 @@ project "Vitar"
         "%{IncludeDir.entt}",
         "%{IncludeDir.yaml_cpp}",
         "%{IncludeDir.ImGuizmo}",
+        "%{IncludeDir.VulkanSDK}",
    }
 
    links
@@ -52,7 +54,7 @@ project "Vitar"
    }
 
    filter "files:vendor/ImGuizmo/**.cpp"
-        flags { "NoPCH" }
+   flags { "NoPCH" }
 
    filter "system:windows"
         systemversion "latest"
@@ -69,12 +71,33 @@ project "Vitar"
         runtime "Debug"
         symbols "on"
 
+        links
+		{
+			"%{Library.ShaderC_Debug}",
+			"%{Library.SPIRV_Cross_Debug}",
+			"%{Library.SPIRV_Cross_GLSL_Debug}",
+		}
+
     filter "configurations:Release"
         defines "VITAR_Release"
         runtime "Release"
         optimize "on"
 
+        links
+		{
+			"%{Library.ShaderC_Release}",
+			"%{Library.SPIRV_Cross_Release}",
+			"%{Library.SPIRV_Cross_GLSL_Release}",
+		}
+
     filter "configurations:Dist"
         defines "VITAR_Dist"
         runtime "Release"
         optimize "on"
+
+		links
+		{
+			"%{Library.ShaderC_Release}",
+			"%{Library.SPIRV_Cross_Release}",
+			"%{Library.SPIRV_Cross_GLSL_Release}",
+		}

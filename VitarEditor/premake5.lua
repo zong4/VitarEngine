@@ -2,7 +2,7 @@ project "VitarEditor"
 	kind "ConsoleApp"
 	language "C++"
 	cppdialect "C++17"
-	staticruntime "on"
+	staticruntime "off"
 
 	targetdir ("%{wks.location}/bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("%{wks.location}/bin-int/" .. outputdir .. "/%{prj.name}")
@@ -34,10 +34,10 @@ project "VitarEditor"
 	filter "system:windows"
 		systemversion "latest"
 
-        defines
-        {
-            "VITAR_PLANTFORM_WINDOWS",
-        }
+        -- defines
+        -- {
+        --     "VITAR_PLANTFORM_WINDOWS",
+        -- }
 
 	filter "configurations:Debug"
 		defines "VITAR_DEBUG"
