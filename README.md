@@ -21,7 +21,7 @@ To build Vitar, you must first install the following tools.
 
 ### Windows 10/11
 
-- Visual Studio 2019 (or more recent)
+- Visual Studio 2022 (or more recent)
 - Git 2.1 (or more recent)
 
 ### macOS >= 10.15 (x86_64)
@@ -32,7 +32,9 @@ To build Vitar, you must first install the following tools.
 
 ### Build on Windows
 
-You may execute the **Setup.bat**. This batch file will generate the projects, and build the **Release** config of **Vitar Engine** automatically. After successful build, you can find the Sandbox.exe at the **bin\Debug-windows-x86_64\Sandbox** directory.
+You may execute the **scripts/Setup.bat**. This batch file will generate the projects, and build the **Debug** config of **Vitar Engine** automatically. 
+
+After successful build, you can find the **VitarEditor.exe** at the **bin\Debug-windows-x86_64\VitarEditor** directory.
 
 ### Build on macOS
 
