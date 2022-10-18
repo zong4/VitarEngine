@@ -6,21 +6,21 @@
 
 namespace Vitar 
 {
-	class Vitarnut : public Application
+	class VitarEditor : public Application
 	{
 	public:
-		Vitarnut() : Application("Vitar Editor")
+		VitarEditor(ApplicationCommandLineArgs args) : Application("Vitar Editor", args)
 		{
 			PushLayer(new EditorLayer());
 		}
 
-		~Vitarnut()
+		~VitarEditor()
 		{
 		}
 	};
 
-	Application* CreateApplication()
+	Application* CreateApplication(ApplicationCommandLineArgs args)
 	{
-		return new Vitarnut();
+		return new VitarEditor(args);
 	}
 }
