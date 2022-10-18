@@ -9,18 +9,19 @@ namespace Vitar
 	class VitarEditor : public Application
 	{
 	public:
-		VitarEditor(ApplicationCommandLineArgs args) : Application("Vitar Editor", args)
+		VitarEditor(const ApplicationSpecification& spec)
+			: Application(spec)
 		{
 			PushLayer(new EditorLayer());
-		}
-
-		~VitarEditor()
-		{
 		}
 	};
 
 	Application* CreateApplication(ApplicationCommandLineArgs args)
 	{
-		return new VitarEditor(args);
+		ApplicationSpecification spec;
+		spec.Name = "Vitar Editor";
+		spec.CommandLineArgs = args;
+
+		return new VitarEditor(spec);
 	}
 }
