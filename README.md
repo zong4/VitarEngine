@@ -30,15 +30,9 @@ To build Vitar, you must first install the following tools.
 
 ## Build Vitar
 
-Firstly, download submodules.
-
-```
-git submodule update --init --recursive
-```
-
 ### Build on Windows
 
-You may execute the **GenerateProjects.bat**. This batch file will generate the projects, and build the **Release** config of **Vitar Engine** automatically. After successful build, you can find the Sandbox.exe at the **bin\Debug-windows-x86_64\Sandbox** directory.
+You may execute the **Setup.bat**. This batch file will generate the projects, and build the **Release** config of **Vitar Engine** automatically. After successful build, you can find the Sandbox.exe at the **bin\Debug-windows-x86_64\Sandbox** directory.
 
 ### Build on macOS
 
