@@ -42,3 +42,6 @@
 # [submodule "Vitar/vendor/Box2D"]
 # 	path = Vitar/vendor/Box2D
 # 	url = https://github.com/thecherno/box2d
+[submodule "Vitar/vendor/Box2D"]
+	path = Vitar/vendor/Box2D
+	url = https://github.com/thecherno/box2d

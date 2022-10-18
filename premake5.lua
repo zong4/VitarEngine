@@ -20,6 +20,7 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 group "Dependencies"
     include "vendor/premake"
+	include "Vitar/vendor/Box2D"
 	include "Vitar/vendor/GLFW"
 	include "Vitar/vendor/Glad"
 	include "Vitar/vendor/imgui"
