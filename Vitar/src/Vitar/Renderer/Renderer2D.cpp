@@ -256,7 +256,10 @@ namespace Vitar
 
 	void Renderer2D::DrawSprite(const glm::mat4& transform, SpriteRendererComponent& src, float tilingFactor, int entityID)
 	{
-		DrawQuad(transform, src.Color, s_Data.WhiteTexture, tilingFactor, entityID);
+		if (src.Texture)
+			DrawQuad(transform, src.Color, src.Texture, src.TilingFactor, entityID);
+		else
+			DrawQuad(transform, src.Color, s_Data.WhiteTexture, src.TilingFactor, entityID);
 	}
 
 	void Renderer2D::ResetStats()
