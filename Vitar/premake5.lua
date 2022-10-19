@@ -40,6 +40,7 @@ project "Vitar"
         "%{IncludeDir.glm}",
         "%{IncludeDir.stb_image}",
         "%{IncludeDir.entt}",
+        "%{IncludeDir.mono}",
         "%{IncludeDir.yaml_cpp}",
         "%{IncludeDir.ImGuizmo}",
         "%{IncludeDir.VulkanSDK}",
@@ -53,6 +54,8 @@ project "Vitar"
         "ImGui",
         "yaml-cpp",
         "opengl32.lib",
+
+        "%{Library.mono}",
    }
 
    filter "files:vendor/ImGuizmo/**.cpp"
@@ -63,10 +66,15 @@ project "Vitar"
 
         defines
         {
-            -- "VITAR_PLANTFORM_WINDOWS",
-            -- "VITAR_BUILD_DLL",
-            -- "GLFW_INCLUDE_NONE",
         }
+
+        links
+		{
+			"%{Library.WinSock}",
+			"%{Library.WinMM}",
+			"%{Library.WinVersion}",
+			"%{Library.BCrypt}",
+		}
 
     filter "configurations:Debug"
         defines "VITAR_DEBUG"

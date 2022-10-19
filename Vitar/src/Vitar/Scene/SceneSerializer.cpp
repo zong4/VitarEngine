@@ -306,7 +306,7 @@ namespace Vitar
 		}
 		catch (YAML::ParserException e)
 		{
-			VITAR_CORE_ERROR("Failed to load .hazel file '{0}'\n     {1}", filepath, e.what());
+			VITAR_CORE_ERROR("Failed to load .vitar file '{0}'\n     {1}", filepath, e.what());
 			return false;
 		}
 

@@ -28,7 +28,7 @@ namespace Vitar
 
 	struct ApplicationSpecification
 	{
-		std::string Name = "Hazel Application";
+		std::string Name = "Vitar Application";
 		std::string WorkingDirectory;
 		ApplicationCommandLineArgs CommandLineArgs;
 	};

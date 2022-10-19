@@ -27,6 +27,15 @@ group "Dependencies"
     include "Vitar/vendor/yaml-cpp"
 group ""
 
-include "Vitar"
--- include "Sandbox"
-include "VitarEditor"
+group "Core"
+	include "Vitar"
+	include "Vitar-ScriptCore"
+group ""
+
+group "Tools"
+	include "VitarEditor"
+group ""
+
+-- group "Misc"
+-- 	include "Sandbox"
+-- group ""

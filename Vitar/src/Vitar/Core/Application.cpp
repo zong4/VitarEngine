@@ -4,6 +4,7 @@
 #include "Vitar/Core/Log.h"
 #include <glad/glad.h>
 #include "Vitar/Renderer/Renderer.h"
+#include "Vitar/Scripting/ScriptEngine.h"
 #include "Input.h"
 
 #include "Vitar/Utils/PlatformUtils.h"
@@ -30,6 +31,7 @@ namespace Vitar
 		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
 
 		Renderer::Init();
+		ScriptEngine::Init();
 
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);
@@ -39,6 +41,7 @@ namespace Vitar
 	{
 		VITAR_PROFILE_FUNCTION();
 
+		ScriptEngine::Shutdown();
 		Renderer::Shutdown();
 	}
 

@@ -1,5 +1,6 @@
 # Binaries
 Debug-windows-x86_64/
+Intermediates/
 
 # Vitar Files
 *.log
@@ -12,6 +13,7 @@ VitarEditor/**.json
 **.vcxproj
 **.vcxproj.filters
 **.vcxproj.user
+**.csproj
 
 # Directories
 Sandbox/
