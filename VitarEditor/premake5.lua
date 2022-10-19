@@ -21,6 +21,7 @@ project "VitarEditor"
 		"%{wks.location}/Vitar/src",
 		"%{wks.location}/Vitar/vendor",
         "%{wks.location}/Vitar/vendor/Glad/include",
+		"%{IncludeDir.filewatch}",
 		"%{IncludeDir.glm}",
 		"%{IncludeDir.entt}",
 		"%{IncludeDir.ImGuizmo}",
@@ -33,11 +34,6 @@ project "VitarEditor"
 
 	filter "system:windows"
 		systemversion "latest"
-
-        -- defines
-        -- {
-        --     "VITAR_PLANTFORM_WINDOWS",
-        -- }
 
 	filter "configurations:Debug"
 		defines "VITAR_DEBUG"
